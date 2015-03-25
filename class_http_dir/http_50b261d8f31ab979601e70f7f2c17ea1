@@ -1,0 +1,187 @@
+HTTP/1.0 404 Not Found
+Cache-Control: private
+Content-Type: text/html
+Server: Microsoft-IIS/7.5
+X-Powered-By: ASP.NET
+P3P: CP: BUS CUR CONo FIN IVDo ONL OUR PHY SAMo TELo
+Date: Wed, 13 Aug 2014 13:06:52 GMT
+Content-Length: 8807
+X-Cache: MISS from gw
+Via: 1.1 gw:3128 (squid/2.7.STABLE9)
+Connection: close
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+<title>The page you requested can't be found - MSN Money</title>
+<meta name="robots" content="noindex,nofollow" />
+<meta http-equiv="X-FRAME-OPTIONS" content="DENY" />
+
+
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link rel="search" type="application/opensearchdescription+xml" title="Bing" href="http://www.live.com/live/search/search.xml" />
+
+
+<link href="http://blstc.msn.com/br/gbl/lg/1/favicon.ico" rel="icon" type="x-icon" />
+<link href="http://blstc.msn.com/br/gbl/lg/1/favicon.ico" rel="shortcut icon" type="x-icon" />
+<link rel="meta" href="http://moneycentral.msn.com/labels.xml" type="application/rdf+xml" title="ICRA labels" />
+<meta http-equiv="pics-Label" content='(pics-1.1 "http://www.icra.org/pics/vocabularyv03/" l gen true for "http://moneycentral.msn.com" r (n 0 s 0 v 0 l 0 oa 0 ob 0 oc 0 od 0 oe 0 of 0 og 0 oh 0 c 3)  gen true for "http://moneycentral.msn.com" r (n 0 s 0 v 0 l 0 oa 0 ob 0 oc 0 od 0 oe 0 of 0 og 0 oh 0 c 3))' />
+
+
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.1.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
+<script type="text/javascript" src="/inc/scr/global.js?v=1420"></script>
+<script type="text/javascript" src="/inc/scr/compound.js?v=1420"></script>
+
+
+<link rel="stylesheet" type="text/css" href="/inc/css/e0dc289eddc641a4a8ca34b9b90a9c3e.css" media="all" />
+<!--[if lt IE 8]>
+<link rel="stylesheet" type="text/css" href="/inc/css/396220229119e8e6b91a60402d42e9.css" media="all" />
+<![endif]-->
+<!--[if IE 6]>
+<link rel="stylesheet" type="text/css" href="/inc/css/73b368043b5d303b9db3c3e0169b63.css" media="all" />
+<![endif]-->
+
+</head>
+<body>
+<div id="wrapper">
+    <div id="head">
+	    <div class="head1 w12">
+			<div class="top">
+				<ul class="network flat">
+					<li id="hotmail" class="flyout noscript">
+						<a href="http://mail.live.com" class="flytrigger">Hotmail</a>
+						<div class="flycontainer">
+							<ul class="section">
+								<li><a href="http://mail.live.com/?rru=inbox">Inbox</a></li>
+								<li><a href="http://calendar.live.com">Calendar</a></li>
+								<li><a href="http://mail.live.com/?rru=contacts">Contacts</a></li>
+								<li><span class="divider"></span></li>
+								<li><a href="http://mail.live.com/?rru=compose">Send e-mail</a></li>
+							</ul>
+						</div>
+					</li>
+					<li id="messenger"><a href="http://explore.live.com/windows-live-messenger">Messenger</a></li>
+					<li class="last"><a href="http://bing.com">Bing</a></li>
+				</ul>
+				<ul class="user flat">
+					<li class="first">
+						<a id="hplink" href="http://myhomemsn.com">Make MSN your homepage</a>
+						<a id="binglink" href="http://www.bing.com/customizeBrowser">Make Bing your decision engine</a>
+					</li>
+					<li class="last"><span id="username" class="flytrigger">Welcome</span></li>
+				</ul>
+			</div>
+			<div class="bottom">
+				<div class="left">
+					<div class="brand">
+						<div class="logo"><a href="http://www.msn.com"></a></div>
+						<div class="channel"><a href="http://money.msn.com">Money</a></div>
+					</div>
+<div class="websearch cf">
+    <h2>Bing Search:</h2>
+    <form id="srchfrm1" method="get" action="http://investing.money.msn.com/investments/money-search" target="_top">
+        <ul class="flat scopes">
+            <li class="first selected"><a href="http://investing.money.msn.com/investments/money-search" target="_top">Money</a></li>
+            <li class="sp">|</li>
+            <li class="last"><a href="http://www.bing.com/search" target="_top">Web</a></li>
+        </ul>
+        <div class="searchform typing">
+            <label accesskey="s" for="q1">Bing search:</label>
+            <div class="searchinputarea">
+                <input id="q1" title="Search for" class="sidq text" maxlength="215" name="q" value="" />
+                <input class="spyglass image" alt="Search" title="Search" src="/inc/Views/Shared/Core/Content/images/header/search_button.gif" type="image" />
+                <img alt="" class="blogo" width="54" height="33" src="/inc/Views/Shared/Core/Content/images/header/bing.gif" />
+				<input type="hidden" value="Search Money" class="helpertext" />
+                <input type="hidden" value="MONEY5" name="form" />
+                <input type="hidden" value="en-US" name="mkt" />
+            </div>
+        </div>
+    </form>
+    <div class="pop"></div>
+</div>
+<script type="text/javascript">
+$(document).ready(function() 
+{
+	$.autoSuggest({cookieDomain:"msn"});
+});
+</script>
+				</div>
+				<div class="right">
+					<div class="popt">
+						<ul class="flat">
+							<li class="flyout first noscript">
+								<span class="flytrigger">Page options</span>
+								<div class="flycontainer alignright">
+									<ul class="section">
+										<li><a href="http://onlinehelp.microsoft.com/en-us/msn/ff808788.aspx">Make text larger</a></li>
+										<li><a class="icon on" id="asugoff"><img alt="enabled" height="7" width="7" src="/inc/Views/Shared/Core/Content/images/header/checkmark.png" /><span>Show search suggestions</span></a></li>
+										<li><a href="#" onclick="javascript:top.DoHelp();return false;">Help</a></li>
+									</ul>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="echoice"></div>
+				</div>
+			</div>
+	    </div>
+    </div>
+    <div id="page" class="pa w12">
+        <div id="content">
+            <div id="subhead">
+				<div class="cogr co cf coa2 coc5">
+					<div class="br br1 brl">
+						<p style="color:#ccc;font-size:16pt">The page you requested can't be found</p>
+						<p>The Web address that you typed or clicked may be incorrect, the page may have moved, or the page may not display due to a technical problem. Please check the address and try again. To find a specific article or topic on MSN Money, you can view the <a href="http://money.msn.com/default.aspx">Home Page</a>, the <a href="http://money.msn.com/common/sitemap.aspx">Site Map</a>, or use the site search box above.</p>
+					</div>
+				</div>
+			</div>
+        </div>
+		<div id="subfoot">
+<div class="co co1b1 coa2">
+	<div class="h2 cf"><span>DATA PROVIDERS</span></div>
+	<div class="br br1 brl">
+		<div class="attribution">
+<p>Copyright &#169; <script type="text/javascript">document.write(Math.max(2013,(new Date()).getYear()));document.close();</script><noscript>2013</noscript> Microsoft. All rights reserved.</p>
+<p>
+Fundamental company data and historical chart data provided by <a href="http://www.morningstar.com/">Morningstar Inc</a>. 
+Real-time index quotes and delayed quotes supplied by <a href="http://www.morningstar.com/">Morningstar Inc</a>. 
+Quotes delayed by up to 15 minutes, except where indicated otherwise. Fund summary, fund performance and dividend data provided by <a href="http://www.morningstar.com/">Morningstar Inc</a>. 
+Analyst recommendations provided by <a href="http://www.zacks.com/">Zacks</a> Investment Research. 
+StockScouter data provided by Verus Analytics. 
+IPO data provided by Hoover's Inc. Index membership data provided by <a href="http://www.morningstar.com/">Morningstar Inc</a>.
+</p>
+		</div>
+	</div>
+</div>
+		</div>
+<div id="foot" style="clear:both">
+	
+	<div class="foot1 cf">
+        <ul class="primary">
+            <li class="first"><a href="http://go.microsoft.com/fwlink/?LinkId=248688" target="_top">MSN Privacy</a></li>
+            <li><a href="http://g.msn.com/0TO_/enus" target="_top">Legal</a></li>
+            <li><a href="http://advertising.microsoft.com/msn" target="_top">Advertise</a></li>
+            <li class="last"><a href="http://www.msn.com/worldwide.aspx" target="_top">MSN Worldwide</a></li>
+        </ul>
+        <ul class="secondary">
+            <li class="last"><a href="#" onclick="javascript:top.DoHelp();return false;">Help</a></li>
+            <li><a href="http://g.msn.com/AIPRIV/en-us" target="_top">About our ads</a></li>
+            <li><a href="http://money.msn.com/common/sitemap.aspx" target="_top">Site map</a></li>
+            <li><a href="http://rss.msn.com/default.aspx" target="_top">RSS</a></li>
+        </ul>
+        <div class="copyright">
+            <span>&#169; <script type="text/javascript">document.write(Math.max(2013,(new Date()).getYear()));document.close();</script><noscript>2013</noscript> Microsoft</span>
+            <a class="imgmsft" href="http://www.microsoft.com/" title="Microsoft"></a>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+
+</body>
+</html>

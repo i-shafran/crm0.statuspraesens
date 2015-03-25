@@ -1,0 +1,29 @@
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  
+
+DB Changes from 5.4.0-201308 to 5.4.0-201310 -------- Starts 
+
+
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_links SET linkicon = 'themes/images/send_sms.png' WHERE linktype = 'DETAILVIEWBASIC' and linklabel = 'Send SMS'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_links SET linkicon = 'themes/images/products.gif' WHERE linktype = 'DETAILVIEWBASIC' and linklabel = 'LBL_SHOW_ACCOUNT_HIERARCHY'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_links SET linkicon = 'themes/images/actionGenerateInvoice_new.gif' WHERE linktype = 'DETAILVIEWBASIC' and linklabel = 'LBL_SP_ADD_SPPAYMENTS'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_links SET linkicon = 'themes/images/actionGenerateQuote_new.gif' WHERE linktype = 'DETAILVIEWBASIC' and linklabel = 'LBL_ACCOUNTS_ADD_ACT'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_links SET linkicon = 'themes/images/actionGenerateSalesOrder_new.gif' WHERE linktype = 'DETAILVIEWBASIC' and linklabel = 'LBL_ACCOUNTS_ADD_CONSIGNMENT'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_links SET linkicon = 'themes/images/bookMark.gif' WHERE linktype = 'DETAILVIEWBASIC' and linklabel = 'Add Note'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_links SET linkicon = 'themes/images/attachment.gif' WHERE linktype = 'DETAILVIEWBASIC' and linklabel = 'Add Project Task'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO `com_vtiger_workflowtasks_entitymethod` VALUES (8,'PurchaseOrder','UpdateInventoryPurchase','include/InventoryHandler.php','handleInventoryPurchase')
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO vtiger_def_org_share VALUES(27,'18',2,0)
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO vtiger_org_share_action2tab VALUES(0, '18')
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO vtiger_org_share_action2tab VALUES(1, '18')
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO vtiger_org_share_action2tab VALUES(2, '18')
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO vtiger_org_share_action2tab VALUES(3, '18')
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_tab SET ownedby=0 WHERE tabid = '18'
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO `vtiger_field` (`tabid`, `fieldid`, `columnname`, `tablename`, `generatedtype`, `uitype`, `fieldname`, `fieldlabel`, `readonly`, `presence`, `defaultvalue`, `maximumlength`, `sequence`, `block`, `displaytype`, `typeofdata`, `quickcreate`, `quickcreatesequence`, `info_type`, `masseditable`, `helpinfo`) VALUES ('18', 846, 'smownerid', 'vtiger_crmentity', 1, '53', 'assigned_user_id', 'Assigned To', 1, 0, '', 100, 13, '42', 1, 'V~M', 0, 4, 'BAS', 1, NULL)
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> INSERT INTO vtiger_def_org_field VALUES('18', 846, 0, 0)
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> ALTER TABLE `vtiger_links` MODIFY `linkurl` varchar(1024) default NULL
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  Query Success ==> ALTER TABLE `vtiger_organizationdetails` ADD `okpo` varchar(100) default ''
+06/17/2014 15:32:55 DEBUG [1412] MIGRATION -  
+
+DB Changes from 5.4.0-201308 to 5.4.0-201310 -------- Ends 
+
+
+06/17/2014 15:33:51 DEBUG [1412] MIGRATION -  Query Success ==> UPDATE vtiger_version SET old_version='5.4.0-201308',current_version='5.4.0-201310'
