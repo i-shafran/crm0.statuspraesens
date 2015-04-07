@@ -501,7 +501,7 @@ function sentEmailAjax(popupid,esentid)
 
 function controlEmails()
 {
-    if (Ajax)
+    if (typeof Ajax != "undefined")
     {
         var url = "module=EMAILMaker&action=EMAILMakerAjax&file=EMAILMsg&mode=ajax&ajax=true&type=control";
     

@@ -1,3 +1,7 @@
 .clearfix {
 	clear: both;
 }
+
+button.mass_edit_save {
+	background-color: greenyellow;
+}

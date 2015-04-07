@@ -5,3 +5,5 @@ SQL
 
 config.inc.php
 vtiger6.zip
+*.htaccess
+info.php
