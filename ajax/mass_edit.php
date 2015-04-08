@@ -1,4 +1,4 @@
 <?
-require("class.ajax.php");
+include_once '../classes/AutoLoader.php';
 
 new ajax();

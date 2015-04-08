@@ -46,7 +46,107 @@ class ajax
 	 */
 	public function mass_edit_Accounts()
 	{
+//		require_once '../vtlib/Vtiger/Module.php';
+//		require_once '../modules/Accounts/Accounts.php';
+//		
+//		$Accounts = new Accounts();
+//		$Accounts->Accounts();
+//		var_dump($Accounts->column_fields);
 		
+		//$Accounts->save("Accounts");
+
+		if(true){
+			$this->mess = "Ok";
+			$this->send_ajax();
+		} else {
+			$this->error = "Обновление не удалось";
+			$this->send_ajax();
+			return false;
+		}
+
+		return true;
+
+		// Token
+		$url = "http://3.dev.ept.ru/webservice.php?operation=getchallenge&username=admin";
+		//$url = "http://3.dev.ept.ru/webservice.php?operation=listtypes&session_name=$sessionId";
+		$ch = curl_init();
+		$arParams = array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_TIMEOUT => 30
+		);
+		curl_setopt_array($ch, $arParams);
+		$result = curl_exec($ch);
+		$error = curl_error($ch);
+		curl_close($ch);
+
+		if($result){
+			$token = json_decode($result);
+			$token = $token->result->token;
+		} else {
+			echo "Error: ".$error."\n";
+			die;
+		}
+		
+		// Login
+		$url = "http://3.dev.ept.ru/webservice.php";
+		$fields_string = "";
+		$fieldsPost = array(
+			"operation" => "login",
+			"username" => "admin",
+			"accessKey" => urlencode(md5($token."YK0NdZ1h3xtv6oyr"))
+		);
+		foreach($fieldsPost as $key=>$value) {
+			$fields_string .= $key.'='.$value.'&'; 
+		}
+		$fields_string = rtrim($fields_string, '&');
+						
+		$ch = curl_init();
+		$arParams = array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_POST => count($fieldsPost),
+			CURLOPT_POSTFIELDS => $fields_string
+		);
+		curl_setopt_array($ch, $arParams);
+		$result = curl_exec($ch);
+		$error = curl_error($ch);
+		curl_close($ch);
+
+		if($result){
+			$sessionId = json_decode($result);
+			$sessionId = $sessionId->result->sessionName;
+		} else {
+			echo "Error: ".$error."\n";
+			die;
+		}
+		
+		// Update
+		$url = "http://3.dev.ept.ru/webservice.php?operation=listtypes&session_name=$sessionId";
+		$ch = curl_init();
+		$arParams = array(
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => 1,
+			CURLOPT_TIMEOUT => 30
+		);
+		curl_setopt_array($ch, $arParams);
+		$result = curl_exec($ch);
+		$error = curl_error($ch);
+		curl_close($ch);
+
+		if($result){
+			echo $result;
+		} else {
+			echo "Error: ".$error."\n";
+			die;
+		}
+
+
+
+
+
+		die("END");
 		
 		if(true){
 			$this->mess = "Ok";
@@ -163,5 +263,23 @@ class ajax
 
 		return true;
 	}
+
+	static function vtws_getParameter($parameterArray, $paramName,$default=null){
+
+		if (!get_magic_quotes_gpc()) {
+			if(is_array($parameterArray[$paramName])) {
+				$param = array_map('addslashes', $parameterArray[$paramName]);
+			} else {
+				$param = addslashes($parameterArray[$paramName]);
+			}
+		} else {
+			$param = $parameterArray[$paramName];
+		}
+		if(!$param){
+			$param = $default;
+		}
+		return $param;
+	}
+
 
 }

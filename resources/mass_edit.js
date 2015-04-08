@@ -9,8 +9,11 @@ $(document).ready(function() {
 		}
 	});
 		
-	$("li[data-type=mass_edit]").click(function()
+	// Ссылка "Массовое редактирование"
+	$("li[data-type=mass_edit]").click(function(e)
 	{
+		e.preventDefault();
+		
 		// Инпуты по строкам
 		$("table.listViewEntriesTable tr.listViewEntries").each(function()
 		{
@@ -70,8 +73,7 @@ $(document).ready(function() {
 				ajax = data;
 				if(ajax.mess.length > 0)
 				{
-					// TODO: релоад
-					location.reload();
+					location.reload(); // TODO: релоад
 					console.log("Все ок");
 				}
 				else if (ajax.error.length > 0)
