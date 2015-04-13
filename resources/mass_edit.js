@@ -61,20 +61,36 @@ $(document).ready(function() {
 
 		// Отправка запроса в базу и релоад страницы
 		var type = "mass_edit_Accounts";
+		var model = "accounts";		
+		mass_edit(type, sevedRows, model);
+
+		location.reload(); // релоад
+		
+	});
+
+}); // end ready()
+
+function mass_edit(type, sevedRows, model)
+{
+	for (var row in sevedRows) {
+		row = sevedRows[row];
+		var id = row.id;
+		
 		$.ajax({
-			type: "GET",
-			url: "/ajax/mass_edit.php",
+			type: "POST",
+			url: "/rest_api/"+ model +"/"+ id +"/edit",
 			data: {
 				type  : type,
-				data  : sevedRows
+				data  : row
 			},
 			dataType: "JSON",
+			cache: false,
+			async: false, 
 			success: function(data){
 				ajax = data;
 				if(ajax.mess.length > 0)
-				{
-					location.reload(); // TODO: релоад
-					console.log("Все ок");
+				{					
+					console.log(ajax.mess);
 				}
 				else if (ajax.error.length > 0)
 				{
@@ -84,6 +100,5 @@ $(document).ready(function() {
 				console.log("Ajax запрос выполнен неудачно");
 			}
 		});
-	});
-
-}); // end ready()
+	}
+}
