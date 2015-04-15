@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	var inputsName = []; // Имена полей
 	var sevedRows = {}; // Поля для сохранения
-
+	
 	$("table.listViewEntriesTable tr.listViewHeaders th").each(function(){
 		var name = $(this).find("a").data("columnname");
 		if(typeof name != "undefined"){
@@ -60,9 +60,8 @@ $(document).ready(function() {
 		$(this).removeClass("mass_edit_save").text("Идет сохранение...");
 
 		// Отправка запроса в базу и релоад страницы
-		var type = "mass_edit_Accounts";
-		var model = "accounts";		
-		mass_edit(type, sevedRows, model);
+		var module = $_GET().module;		
+		mass_edit(sevedRows, module);
 
 		location.reload(); // релоад
 		
@@ -70,7 +69,8 @@ $(document).ready(function() {
 
 }); // end ready()
 
-function mass_edit(type, sevedRows, model)
+// Ajax запрос на массовое редактирование
+function mass_edit(sevedRows, module)
 {
 	for (var row in sevedRows) {
 		row = sevedRows[row];
@@ -78,9 +78,8 @@ function mass_edit(type, sevedRows, model)
 		
 		$.ajax({
 			type: "POST",
-			url: "/rest_api/"+ model +"/"+ id +"/edit",
+			url: "/rest_api/"+ module +"/"+ id +"/edit",
 			data: {
-				type  : type,
 				data  : row
 			},
 			dataType: "JSON",
@@ -101,4 +100,19 @@ function mass_edit(type, sevedRows, model)
 			}
 		});
 	}
+}
+
+// Получить GET параметры
+function $_GET(){
+	var urlVar = window.location.search; // получаем параметры из урла
+	var arrayVar = [];
+	var valueAndKey = [];
+	var resultObject = {};
+	arrayVar = (urlVar.substr(1)).split('&'); // разбираем урл на параметры
+	if(arrayVar[0]=="") return false; // если нет переменных в урле
+	for (i = 0; i < arrayVar.length; i ++) {
+		valueAndKey = arrayVar[i].split('=');
+		resultObject[valueAndKey[0]] = valueAndKey[1].toLowerCase();
+	}
+	return resultObject;
 }
