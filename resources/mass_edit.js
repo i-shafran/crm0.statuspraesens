@@ -7,7 +7,7 @@ $(document).ready(function() {
 		if(typeof name != "undefined"){
 			inputsName.push(name);
 		}
-	});
+	});	
 		
 	// Ссылка "Массовое редактирование"
 	$("li[data-type=mass_edit]").click(function(e)
@@ -22,11 +22,26 @@ $(document).ready(function() {
 			{
 				var text = $(this).text();
 				var children = $(this).children();
+				var type = $(this).data("field-type");
+				var text_size = text.length + 5;
 				if(children.is()){
-					children.replaceWith("<input type='text' value='"+ text +"' name='"+ inputsName[i] +"'/>")
+					children.replaceWith("<input size='"+ text_size +"' type='text' value='"+ text +"' name='"+ inputsName[i] +"'/>")
 				}
 				else {
-					$(this).wrapInner("<input type='text' value='"+ text +"' name='"+ inputsName[i] +"'/>");
+					if(type == "boolean"){
+						if(text == "Да"){
+							text = "checked";
+						} else {
+							text = "";
+						}
+						$(this).wrapInner("<input type='checkbox' "+ text +" value='' name='"+ inputsName[i] +"'/>");
+					} else if(type == "currency"){
+						text = text.replace("руб", "");
+						text_size = text_size - 5;
+						$(this).wrapInner("<input size='"+ text_size +"' type='text' value='"+ text +"' name='"+ inputsName[i] +"'/>");
+					} else {
+						$(this).wrapInner("<input size='"+ text_size +"' type='text' value='"+ text +"' name='"+ inputsName[i] +"'/>");
+					}
 				}
 				i++;
 
@@ -36,6 +51,15 @@ $(document).ready(function() {
 					var id = $(this).parents("tr").data("id");
 					var text = $(this).val();
 					var name = $(this).attr("name");
+
+					// Checkbox
+					if($(this).attr("type") == "checkbox"){
+						if($(this).attr("checked") == "checked"){
+							text = 1;
+						} else {
+							text = 0;
+						}
+					}
 
 					if(!sevedRows[id]){
 						sevedRows[id] = {id: id};
