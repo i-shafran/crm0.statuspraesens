@@ -1,6 +1,8 @@
+var inputsName = []; // Имена полей
+var sevedRows = {}; // Поля для сохранения
+var module = $_GET().module; // Модуль
+
 $(document).ready(function() {
-	var inputsName = []; // Имена полей
-	var sevedRows = {}; // Поля для сохранения
 	
 	$("table.listViewEntriesTable tr.listViewHeaders th").each(function(){
 		var name = $(this).find("a").data("columnname");
@@ -28,7 +30,10 @@ $(document).ready(function() {
 					children.replaceWith("<input size='"+ text_size +"' type='text' value='"+ text +"' name='"+ inputsName[i] +"'/>")
 				}
 				else {
-					if(type == "boolean"){
+					if(type == "fileLocationType"){
+						get_fileLocationType($(this));
+					}
+					else if(type == "boolean"){
 						if(text == "Да"){
 							text = "checked";
 						} else {
@@ -46,26 +51,7 @@ $(document).ready(function() {
 				i++;
 
 				// Запись в массив полей для сохранения
-				$(this).find("input").change(function()
-				{
-					var id = $(this).parents("tr").data("id");
-					var text = $(this).val();
-					var name = $(this).attr("name");
-
-					// Checkbox
-					if($(this).attr("type") == "checkbox"){
-						if($(this).attr("checked") == "checked"){
-							text = 1;
-						} else {
-							text = 0;
-						}
-					}
-
-					if(!sevedRows[id]){
-						sevedRows[id] = {id: id};
-					}
-					sevedRows[id][name] = text;
-				});
+				add_save_array($(this));
 				
 			});
 			$(this).attr("class", "");
@@ -84,8 +70,7 @@ $(document).ready(function() {
 		$(this).removeClass("mass_edit_save").text("Идет сохранение...");
 
 		// Отправка запроса в базу и релоад страницы
-		var module = $_GET().module;		
-		mass_edit(sevedRows, module);
+		mass_edit(sevedRows);
 
 		location.reload(); // релоад
 		
@@ -93,8 +78,34 @@ $(document).ready(function() {
 
 }); // end ready()
 
+// Запись в массив полей для сохранения
+// object - $(this)
+function add_save_array(object)
+{
+	object.find("input, select").change(function()
+	{
+		var id = $(this).parents("tr").data("id");
+		var text = $(this).val();
+		var name = $(this).attr("name");
+
+		// Checkbox
+		if($(this).attr("type") == "checkbox"){
+			if($(this).attr("checked") == "checked"){
+				text = 1;
+			} else {
+				text = 0;
+			}
+		}
+		
+		if(!sevedRows[id]){
+			sevedRows[id] = {id: id};
+		}
+		sevedRows[id][name] = text;
+	});
+}
+
 // Ajax запрос на массовое редактирование
-function mass_edit(sevedRows, module)
+function mass_edit(sevedRows)
 {
 	for (var row in sevedRows) {
 		row = sevedRows[row];
@@ -125,6 +136,32 @@ function mass_edit(sevedRows, module)
 		});
 	}
 }
+
+// Получить html селектов fileLocationType
+function get_fileLocationType(object)
+{
+	var id = object.parents("tr").data("id");
+	
+	$.ajax({
+		type: "GET",
+		url: "/rest_api/"+ module +"/"+ id +"/get_fileLocationType",
+		dataType: "JSON",
+		success: function(ajax){
+			if(ajax.mess.length > 0)
+			{
+				object.html(ajax.html);
+				add_save_array(object);
+			}
+			else if (ajax.error.length > 0)
+			{
+				console.log(ajax.error);
+			}			},
+		error: function(ajax){
+			console.log("Ajax запрос выполнен неудачно");
+		}
+	});
+}
+
 
 // Получить GET параметры
 function $_GET(){
