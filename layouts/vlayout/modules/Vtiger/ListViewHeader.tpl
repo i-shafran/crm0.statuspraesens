@@ -18,7 +18,7 @@
 						{if count($LISTVIEW_MASSACTIONS) gt 0 || $LISTVIEW_LINKS['LISTVIEW']|@count gt 0}
 							<button class="btn dropdown-toggle" data-toggle="dropdown"><strong>{vtranslate('LBL_ACTIONS', $MODULE)}</strong>&nbsp;&nbsp;<i class="caret"></i></button>
 							<ul class="dropdown-menu">
-                                {if ($smarty.get.module == "Accounts" or $smarty.get.module == "Contacts" or $smarty.get.module == "Project" or $smarty.get.module == "Products") and $smarty.get.view == "List"}
+                                {if ($smarty.get.module == "Accounts" or $smarty.get.module == "Contacts" or $smarty.get.module == "Project" or $smarty.get.module == "Products" or $smarty.get.module == "Leads" or $smarty.get.module == "Documents") and $smarty.get.view == "List"}
                                     <li data-type="mass_edit"><a href="#">Массовое редактирование</a></li>
                                 {/if}
 								{foreach item="LISTVIEW_MASSACTION" from=$LISTVIEW_MASSACTIONS name=actionCount}
