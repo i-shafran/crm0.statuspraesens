@@ -19,3 +19,7 @@ include_once 'classes/AutoLoader.php';
 
 $webUI = new Vtiger_WebUI();
 $webUI->process(new Vtiger_Request($_REQUEST, $_REQUEST));
+
+// Для авторизации в REST api
+global $current_user;
+setcookie("user_key", $current_user->column_fields["accesskey"], 0, "/", $_SERVER["SERVER_NAME"]);
