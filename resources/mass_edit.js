@@ -58,15 +58,17 @@ $(document).ready(function() {
 			
 		});
 		
-		// Кнопка сохранить
+		// Кнопка сохранить и отменить
 		$("button.mass_edit_save").show();
+		$("button.mass_edit_cancel").show();
 		
 		// Скрыть ссылку массовое редактирование
-		$(this).hide();
+		//$(this).hide();
 	});
 	
 	$("button.mass_edit_save").click(function()
 	{
+		$("button.mass_edit_cancel").hide();
 		$(this).removeClass("mass_edit_save").text("Идет сохранение...");
 
 		// Отправка запроса в базу и релоад страницы
@@ -74,6 +76,18 @@ $(document).ready(function() {
 
 		location.reload(); // релоад
 		
+	});
+
+	$("button.mass_edit_cancel").click(function()
+	{
+		location.reload(); // релоад
+	});
+
+	// Кнопка поиска
+	$("button[data-trigger=listSearch]").live("click", function()
+	{
+		$("button.mass_edit_save").hide();
+		$("button.mass_edit_cancel").hide();
 	});
 
 }); // end ready()

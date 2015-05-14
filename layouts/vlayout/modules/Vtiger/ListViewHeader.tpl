@@ -41,7 +41,8 @@
                         </span>
 					{/foreach}
                     <span class="btn-group" id="mass_edit_save">
-                            <button class="btn mass_edit_save" data-type="mass_edit_save" style="display: none">Сохранить</button>
+                            <button class="btn mass_edit_save" style="display: none">Сохранить</button>
+                            <button class="btn mass_edit_cancel" style="display: none">Отмена</button>
                     </span>
 				</span>
 			<span class="btn-toolbar span4">
