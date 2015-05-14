@@ -83,8 +83,8 @@ $(document).ready(function() {
 		location.reload(); // релоад
 	});
 
-	// Кнопка поиска
-	$("button[data-trigger=listSearch]").live("click", function()
+	// Клик кнопка поиска
+	$(document).on("click", "button[data-trigger=listSearch]", function()
 	{
 		$("button.mass_edit_save").hide();
 		$("button.mass_edit_cancel").hide();
