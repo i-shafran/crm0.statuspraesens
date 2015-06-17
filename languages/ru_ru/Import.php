@@ -10,7 +10,7 @@
 $languageStrings = array(
 	'LBL_IMPORT_STEP_1'            => 'Шаг 1'                      , // TODO: Review
 	'LBL_IMPORT_STEP_1_DESCRIPTION' => 'Выберите файл'                 , // TODO: Review
-	'LBL_IMPORT_SUPPORTED_FILE_TYPES' => 'Поддерживаемые типы файлов: .CSV, .VCF', // TODO: Review
+	'LBL_IMPORT_SUPPORTED_FILE_TYPES' => 'Поддерживаемые типы файлов: .CSV', // TODO: Review
 	'LBL_IMPORT_STEP_2'            => 'Шаг 2'                      , // TODO: Review
 	'LBL_IMPORT_STEP_2_DESCRIPTION' => 'Установить формат'              , // TODO: Review
 	'LBL_FILE_TYPE'                => 'Тип файла'                   , // TODO: Review

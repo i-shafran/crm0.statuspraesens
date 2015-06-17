@@ -67,6 +67,7 @@
 										{foreach key=_FIELD_NAME item=_FIELD_INFO from=$ENTITY_FIELDS}
 										<option value="{$_FIELD_NAME}">{$_FIELD_INFO->getFieldLabelKey()|@vtranslate:$FOR_MODULE}</option>
 										{/foreach}
+                                        <option value="cf_719">Отчество</option>
 									</select>
 								</td>
 							</tr>
