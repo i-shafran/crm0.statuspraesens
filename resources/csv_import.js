@@ -50,7 +50,7 @@ function csv_import_check_process(){
 		success: function(data){
 			// Обновление страницы
 			$("div#rightPanel").html(data.html);
-			$("html").scrollTop(0);
+			setTimeout(function() {window.scrollTo(0, 0);},1);
 			
 			if(data.stop != "stop"){
 				csv_import_check_process();

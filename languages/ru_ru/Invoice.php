@@ -32,10 +32,16 @@ $languageStrings = array(
 	'Sent'                         => 'Отправлен'          , 
 	'Credit Invoice'               => 'Просрочен'          , 
 	'Paid'                         => 'Оплачен'              , 
-	'AutoCreated'                  => 'АвтоСоздан'        , 
-	'Cancel'                       => 'Отменить'            , // KEY 5.x: LBL_CANCEL_BUTTON_LABEL
+	'AutoCreated'                  => 'Автосоздан'        ,
+    'Created'                      => 'Создан'              , // KEY 5.x: LBL_CREATED
+    'Approved'                     => 'Одобрен',
+	'Cancel'                       => 'Отменен'            , // KEY 5.x: LBL_CANCEL_BUTTON_LABEL
     
     'LBL_INVOICE_ADD_CONSIGNMENT'  => 'Создать Реализацию',
+        
+    //SalesPlatform.ru begin
+    'Self Company' => 'Юр. лицо',
+    //SalesPlatform.ru end
 );
 
 // SalesPlatform.ru begin SPConfiguration fix

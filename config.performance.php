@@ -21,14 +21,14 @@ $PERFORMANCE_CONFIG = Array(
 	'DB_DEFAULT_CHARSET_UTF8' => true,
 
 	// Compute record change indication for each record shown on listview
-	'LISTVIEW_RECORD_CHANGE_INDICATOR' => true,
+	'LISTVIEW_RECORD_CHANGE_INDICATOR' => false,
 
 	// Turn-off default sorting in ListView, could eat up time as data grows
 	'LISTVIEW_DEFAULT_SORTING' => false,
 	
 	// Compute list view record count while loading listview everytime.
 	// Recommended value false
-	'LISTVIEW_COMPUTE_PAGE_COUNT' => true,
+	'LISTVIEW_COMPUTE_PAGE_COUNT' => false,
 
 	// Control DetailView Record Navigation
 	'DETAILVIEW_RECORD_NAVIGATION' => true,
@@ -39,6 +39,6 @@ $PERFORMANCE_CONFIG = Array(
 	// show value.
 	'HOME_PAGE_WIDGET_GROUP_SIZE' => 12,
 	//take backup legacy style, whenever an admin user logs out.
-	'LOGOUT_BACKUP' => false,
+	'LOGOUT_BACKUP' => true,
 );
 ?>

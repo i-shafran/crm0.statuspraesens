@@ -17,9 +17,9 @@ jQuery.Class("ExtensionStore_ExtensionStore_Js", {}, {
                 auto: true,
                 pager: items.length > 1,
                 speed: items.length > 1 ? 1500 : 0,
-                pause: 2000,
+                pause: 3000,
                 onSlideBefore : function(){
-                    jQuery('.bx-viewport').css({'height': '150px', 'overflow': 'hidden'});
+                    jQuery('.bx-viewport').css({'height': '110px', 'overflow': 'hidden'});
                 }
             });
         }

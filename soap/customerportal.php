@@ -939,7 +939,8 @@ function create_ticket($input_array)
 	*/
 function update_ticket_comment($input_array)
 {
-	global $adb,$mod_strings,$current_user;
+	global $adb,$mod_strings,$current_language; 
+        $mod_strings = return_module_language($current_language, 'HelpDesk');
 	$adb->println("Inside customer portal function update_ticket_comment");
 	$adb->println($input_array);
 
@@ -1157,9 +1158,14 @@ function send_mail_for_password($mailid)
 	$initialfrom = $adb->query_result($from_res,0,'user_name');
 	$from = $adb->query_result($from_res,0,'email1');
 
-	$contents = $mod_strings['LBL_LOGIN_DETAILS'];
-	$contents .= "<br><br>".$mod_strings['LBL_USERNAME']." ".$user_name;
-	$contents .= "<br>".$mod_strings['LBL_PASSWORD']." ".$password;
+    // SalesPlatform.ru begin
+    $contents = getTranslatedString('LBL_LOGIN_DETAILS', 'HelpDesk');
+    $contents .= "<br><br>".getTranslatedString('LBL_USERNAME', 'HelpDesk')." ".$user_name;
+    $contents .= "<br>".getTranslatedString('LBL_PASSWORD', 'HelpDesk')." ".$password;
+	//$contents = getTranslatedString('LBL_LOGIN_DETAILS');
+	//$contents .= "<br><br>".getTranslatedString('LBL_USERNAME')." ".$user_name;
+	//$contents .= "<br>".getTranslatedString('LBL_PASSWORD')." ".$password;
+    // SalesPlatform.ru end
 
 	$mail = new PHPMailer();
 
@@ -1196,7 +1202,7 @@ function send_mail_for_password($mailid)
 // SalesPlatform.ru end
 
 	$mail->Host = $mail_server;
-	if($smtp_auth == 'true')
+	if($smtp_auth) 
 	$mail->SMTPAuth = 'true';
 	$mail->Username = $mail_server_username;
 	$mail->Password = $mail_server_password;
@@ -2102,8 +2108,11 @@ function get_pdf($id,$block,$customerid,$sessionid)
 	$_REQUEST['record']= $id;
 	$_REQUEST['savemode']= 'file';
 	$sequenceNo = getModuleSequenceNumber($block, $id);
-	$filenamewithpath='test/product/'.$id.'_'.$block.'_'.$sequenceNo.'.pdf';
-	if (file_exists($filenamewithpath) && (filesize($filenamewithpath) != 0))
+    // SalesPlatform.ru begin
+	$filenamewithpath='test/product/'.$id.'_'.getTranslatedString($block).'_'.$sequenceNo.'.pdf';
+    //$filenamewithpath='test/product/'.$id.'_'.$block.'_'.$sequenceNo.'.pdf';
+    // SalesPlatform.ru end
+    if (file_exists($filenamewithpath) && (filesize($filenamewithpath) != 0))
 	unlink($filenamewithpath);
 
 	checkFileAccessForInclusion("modules/$block/CreatePDF.php");

@@ -23,7 +23,8 @@
                     {if (!$PASSWORD_STATUS)}
                         <button id="logintoMarketPlace" class="btn btn-primary">{vtranslate('LBL_LOGIN_TO_MARKET_PLACE', $QUALIFIED_MODULE)}</button>
                     {elseif $IS_PRO}
-                        <button id="setUpCardDetails" class="btn btn-primary pull-right">{if !empty($CUSTOMER_PROFILE['CustomerCardId'])}{vtranslate('LBL_UPDATE_CARD_DETAILS', $QUALIFIED_MODULE)}{else}{vtranslate('LBL_SETUP_CARD_DETAILS', $QUALIFIED_MODULE)}{/if}</button>
+                        <button id="setUpCardDetails" class="btn btn-primary ">{if !empty($CUSTOMER_PROFILE['CustomerCardId'])}{vtranslate('LBL_UPDATE_CARD_DETAILS', $QUALIFIED_MODULE)}{else}{vtranslate('LBL_SETUP_CARD_DETAILS', $QUALIFIED_MODULE)}{/if}</button>&nbsp;
+			<button id="logoutMarketPlace" class="btn btn-primary pull-right">{vtranslate('LBL_LOGOUT', $QUALIFIED_MODULE)}</button>
                     {/if}
                     {if $PASSWORD_STATUS && !$IS_PRO}
                         <span class="btn-toolbar">
@@ -39,7 +40,8 @@
         <div class="contents" id="extensionContainer">
             {include file='ExtensionModules.tpl'|@vtemplate_path:$QUALIFIED_MODULE}
         </div>
-
+        
+        <!-- Setup card detals form  start-->          
         <div class="modal setUpCardModal hide">
             <div class="modal-header contentsBackground">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -48,7 +50,7 @@
             <form class="form-horizontal setUpCardForm">
                 <input type="hidden" name="customerId" value="{$CUSTOMER_PROFILE['id']}" />
                 <input type="hidden" name="customerCardId" value="{$CUSTOMER_PROFILE['CustomerCardId']}" />
-                <input type="hidden" name="module" value="ExtensionStorePro" />
+                <input type="hidden" name="module" value="ExtensionStore" />
                 <input type="hidden" name="parent" value="Settings" />
                 <input type="hidden" name="action" value="Basic" />
                 <input type="hidden" name="mode" value="updateCardDetails" />
@@ -59,34 +61,29 @@
                             {vtranslate('LBL_CARD_NUMBER', $QUALIFIED_MODULE)}
                         </span>
                         <div class="controls">
-                            <input type="text" name="cardNumber" placeholder="card number.." value="{if !empty($CUSTOMER_CARD_INFO)} {$CUSTOMER_CARD_INFO['number']}{/if}" data-validation-engine="validate[required, funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" />
+                            <input class="span3" type="text" placeholder="{vtranslate('LBL_CARD_NUMBER_PLACEHOLDER', $QUALIFIED_MODULE)}" name="cardNumber" value="{if !empty($CUSTOMER_CARD_INFO)} {$CUSTOMER_CARD_INFO['number']}{/if}" data-validation-engine="validate[required]" data-mask="9999-9999-9999-9999"/>
                         </div>
                     </div>
                     <div class="control-group">
                         <span class="control-label">
                             <span class="redColor">*</span>&nbsp;
-                            {vtranslate('LBL_EXP_MONTH', $QUALIFIED_MODULE)}
+                            {vtranslate('LBL_EXPIRY_DATE', $QUALIFIED_MODULE)}
                         </span>
                         <div class="controls">
-                            <input type="text" name="expMonth" placeholder="MM" value="{if !empty($CUSTOMER_CARD_INFO)} {$CUSTOMER_CARD_INFO['expmonth']}{/if}" data-validation-engine="validate[required, funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" />
+                            <input style="width: 40px;" placeholder="mm" type="text" name="expMonth" value="{if !empty($CUSTOMER_CARD_INFO)} {$CUSTOMER_CARD_INFO['expmonth']}{/if}" data-validation-engine="validate[required]" data-mask="99" />
+                            &nbsp;-&nbsp;
+                            <input style="width: 40px;" placeholder="yyyy" type="text" name="expYear" value="{if !empty($CUSTOMER_CARD_INFO)} {$CUSTOMER_CARD_INFO['expyear']}{/if}" data-validation-engine="validate[required]" data-mask="9999" />
                         </div>
                     </div>
                     <div class="control-group">
                         <span class="control-label">
                             <span class="redColor">*</span>&nbsp;
-                            {vtranslate('LBL_EXP_YEAR', $QUALIFIED_MODULE)}
+                            {vtranslate('LBL_SECURITY_CODE', $QUALIFIED_MODULE)}
                         </span>
                         <div class="controls">
-                            <input type="text" name="expYear" placeholder="YYYY" value="{if !empty($CUSTOMER_CARD_INFO)} {$CUSTOMER_CARD_INFO['expyear']}{/if}" data-validation-engine="validate[required, funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" />
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <span class="control-label">
-                            <span class="redColor">*</span>&nbsp;
-                            {vtranslate('LBL_CVC_CODE', $QUALIFIED_MODULE)}
-                        </span>
-                        <div class="controls">
-                            <input type="text" name="cvccode" placeholder="000" value="{if !empty($CUSTOMER_CARD_INFO)} *** {/if}" data-validation-engine="validate[required, funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" />
+                            <input style="width: 40px;" type="text" name="cvccode" value="{if !empty($CUSTOMER_CARD_INFO)} *** {/if}" data-validation-engine="validate[required]" data-mask="999"/>
+                            &nbsp;&nbsp;
+                            <span class="icon icon-question-sign" id="helpSecurityCode" onmouseover="Settings_ExtensionStore_Js.showPopover(this)" data-title="{vtranslate('LBL_WHAT_IS_SECURITY_CODE', $QUALIFIED_MODULE)}" data-content="{vtranslate('LBL_SECURITY_CODE_HELP_CONTENT', $QUALIFIED_MODULE)}" data-position="right"></span>
                         </div>
                     </div>
                 </div>
@@ -100,14 +97,16 @@
                                 <div class="pull-right cancelLinkContainer" style="margin-top:0px;">
                                     <a class="cancelLink" type="reset" data-dismiss="modal">{vtranslate('LBL_CANCEL', $MODULE)}</a>
                                 </div>
-                                <button class="btn btn-success" type="submit" name="saveButton"><strong>{vtranslate('LBL_SAVE', $MODULE)}</strong></button>
+                                    <button class="btn btn-success saveButton" type="submit" name="saveButton"><strong>{vtranslate('LBL_SAVE', $MODULE)}</strong></button>
                             </div>
                         </div>  
                     </div>
                 </div>
             </form>
         </div>
+        <!-- Setup card detals form  end-->                              
 
+        <!-- Signup form  start-->                              
         <div class="modal signUpAccount hide">
             <div class="modal-header contentsBackground">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -187,7 +186,9 @@
                 </div>
             </form>
         </div>
-
+        <!-- Signup form  end-->                
+        
+        <!-- Login form  start-->
         <div class="modal loginAccount hide">
             <div class="modal-header contentsBackground">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -207,9 +208,10 @@
                         </span>
                         <div class="controls">
                             {if $REGISTRATION_STATUS}
+                                <input type="hidden" name="emailAddress" value="{$USER_NAME}" />
                                 <span class="control-label"><span class="pull-left">{$USER_NAME}</span></span>
                             {else}
-                                <input type="text" name="emailaddress" data-validation-engine="validate[required, funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" />
+                                <input type="text" name="emailAddress" data-validation-engine="validate[required, custom[email],funcCall[Vtiger_Base_Validator_Js.invokeValidation]]" />
                             {/if}
                         </div>
                     </div>
@@ -253,6 +255,8 @@
                 </div>
             </form>
         </div>
+        <!-- Login form end -->
+        
         {if $LOADER_REQUIRED}
             <div class="modal extensionLoader hide">
                 <div class="modal-header contentsBackground">

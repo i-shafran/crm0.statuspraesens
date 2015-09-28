@@ -89,7 +89,10 @@
 		    <div>
 			<b>{vtranslate('LBL_TOTAL_AFTER_DISCOUNT',$MODULE_NAME)} :</b>
 		    </div>
-		    {if $FINAL_DETAILS.taxtype neq 'group'}
+                    {* SalesPlatform.ru begin *}
+                    {if $FINAL_DETAILS.taxtype eq 'individual'}
+		    {* {if $FINAL_DETAILS.taxtype neq 'group'} *}
+                    {* SalesPlatform.ru end *}
 			<div class="individualTaxContainer">
 			    {assign var=INDIVIDUAL_TAX_INFO value="{vtranslate('LBL_TOTAL_AFTER_DISCOUNT',$MODULE_NAME)} = {$LINE_ITEM_DETAIL["totalAfterDiscount$INDEX"]}\r\n{foreach item=tax_details from=$LINE_ITEM_DETAIL["taxes"]}{$tax_details["taxlabel"]} : {$tax_details["percentage"]} % = {$tax_details["amount"]}\r\n{/foreach}\r\n{vtranslate('LBL_TOTAL_TAX_AMOUNT',$MODULE_NAME)} = {$LINE_ITEM_DETAIL["taxTotal$INDEX"]}"}
 			    (+)&nbsp;<b><a href="javascript:void(0)" class="individualTax inventoryLineItemDetails" data-info='{$INDIVIDUAL_TAX_INFO}'>{vtranslate('LBL_TAX',$MODULE_NAME)} </a> : </b>
@@ -106,7 +109,10 @@
 		    <div>
 			{$LINE_ITEM_DETAIL["totalAfterDiscount$INDEX"]}
 		    </div>
-		    {if $FINAL_DETAILS.taxtype neq 'group'}
+                    {* SalesPlatform.ru begin *}
+                    {if $FINAL_DETAILS.taxtype eq 'individual'}
+		    {* {if $FINAL_DETAILS.taxtype neq 'group'} *}
+                    {* SalesPlatform.ru end *}
 			<div>
 			    {$LINE_ITEM_DETAIL["taxTotal$INDEX"]}
 			</div>
@@ -174,7 +180,10 @@
 		</td>
 	    </tr>
 	    <tr>
-	    {if $FINAL_DETAILS.taxtype eq 'group'}
+            {* SalesPlatform.ru begin *}
+            {if $FINAL_DETAILS.taxtype neq 'individual'}
+	    {* {if $FINAL_DETAILS.taxtype eq 'group'} *}
+            {* SalesPlatform.ru end *}
 		<tr>
 		    <td width="83%">
 			<span class="pull-right">
@@ -248,7 +257,7 @@
                         {if $RECORD->getDisplayValue('received')}
 							{$RECORD->getDisplayValue('received')}
                         {else}
-                            0.00
+                            0
                         {/if}
                     </span>
                 {else}
@@ -256,7 +265,7 @@
                         {if $RECORD->getDisplayValue('paid')}
 							{$RECORD->getDisplayValue('paid')}
                         {else}
-                            0.00
+                            0
                         {/if}
                     </span>
                 {/if}
@@ -272,7 +281,7 @@
                 <span class="pull-right">
                     {if $RECORD->getDisplayValue('balance')}
 						{$RECORD->getDisplayValue('balance')}
-                    {else}0.00
+                    {else}0
                     {/if}
                 </span>
             </td>
