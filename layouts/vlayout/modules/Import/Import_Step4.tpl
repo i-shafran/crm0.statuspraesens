@@ -10,6 +10,9 @@
  ********************************************************************************/
 -->*}
 
+<script type="application/javascript" src="/resources/csv_import.js"></script>
+<script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script> <!--плагин ajaxForm-->
+
 <table width="100%" cellspacing="0" cellpadding="10" class="importContents">
 	<tr>
 		<td>

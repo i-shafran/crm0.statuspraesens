@@ -228,7 +228,7 @@ function setMailerProperties($mail,$subject,$contents,$from_email,$from_name,$to
             $use_sendmail = $adb->query_result($result,0,'use_sendmail');
         }
 
-        if ($use_sendmail == "true")
+        if ($use_sendmail == "true" || $use_sendmail == "on")
             $mail->IsSendmail();
         else
             $mail->IsSMTP();
@@ -351,7 +351,11 @@ function setMailServerProperties($mail)
 	if(isset($_REQUEST['server_password']))
 		$password = $_REQUEST['server_password'];
 	else
-        	$password = $adb->query_result($res,0,'server_password');
+		$password = $adb->query_result($res,0,'server_password');
+
+	// Define default state
+	$smtp_auth = false;
+
 	// Prasad: First time read smtp_auth from the request
 	if(isset($_REQUEST['smtp_auth']))
 	{

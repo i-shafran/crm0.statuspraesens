@@ -18,12 +18,31 @@
     {assign var="FINAL" value=$RELATED_PRODUCTS.1.final_details}
 
     {assign var="IS_INDIVIDUAL_TAX_TYPE" value=false}
-    {assign var="IS_GROUP_TAX_TYPE" value=true}
-
+    {* SalesPlatform.ru begin *} 
+    {assign var="IS_GROUP_TAX_TYPE" value=false}
+    {assign var="IS_GROUP_TAX_INC_TYPE" value=false}
+    {* {assign var="IS_GROUP_TAX_TYPE" value=true} *}
+    {* SalesPlatform.ru end *} 
+    
+    
+    {* SalesPlatform.ru begin *} 
+    
+    {* Get tax type *}
     {if $FINAL.taxtype eq 'individual'}
-        {assign var="IS_GROUP_TAX_TYPE" value=false}
         {assign var="IS_INDIVIDUAL_TAX_TYPE" value=true}
+    {elseif $FINAL.taxtype eq 'group'}   
+        {assign var="IS_GROUP_TAX_TYPE" value=true}   
+    {else}
+        {assign var="IS_GROUP_TAX_INC_TYPE" value=true}
     {/if}
+    
+    {*
+        {if $FINAL.taxtype eq 'individual'}
+            {assign var="IS_GROUP_TAX_TYPE" value=false}
+            {assign var="IS_INDIVIDUAL_TAX_TYPE" value=true}
+        {/if}
+    *}
+    {* SalesPlatform.ru end *} 
     
     <input type="hidden" class="numberOfCurrencyDecimal" value="{$USER_MODEL->get('no_of_currency_decimals')}" />
 
@@ -70,6 +89,9 @@
                         <span class="alignTop">{vtranslate('LBL_TAX_MODE', $MODULE)}</span>
                     </div>
                     <select class="chzn-select lineItemTax" id="taxtype" name="taxtype" style="width: 164px;">
+                        {* SalesPlatform.ru begin *} 
+                        <OPTION value="group_tax_inc" {if $IS_GROUP_TAX_INC_TYPE}selected{/if}>{vtranslate('LBL_GROUP_TAX_INC', $MODULE)}</OPTION> 
+                        {* SalesPlatform.ru end *}
                         <OPTION value="individual" {if $IS_INDIVIDUAL_TAX_TYPE}selected{/if}>{vtranslate('LBL_INDIVIDUAL', $MODULE)}</OPTION>
                         <OPTION value="group" {if $IS_GROUP_TAX_TYPE}selected{/if}>{vtranslate('LBL_GROUP', $MODULE)}</OPTION>
                     </select>
@@ -137,7 +159,7 @@
                 <div class="pull-right"><strong>{vtranslate('LBL_ITEMS_TOTAL',$MODULE)}</strong></div>
             </td>
             <td>
-                <div id="netTotal" class="pull-right netTotal">{if !empty($FINAL.hdnSubTotal)}{$FINAL.hdnSubTotal}{else}0.00{/if}</div>
+                <div id="netTotal" class="pull-right netTotal">{if !empty($FINAL.hdnSubTotal)}{$FINAL.hdnSubTotal}{else}0{/if}</div>
             </td>
         </tr>
         <tr>
@@ -145,7 +167,7 @@
                 <span class="pull-right">(-)&nbsp;<b><a href="javascript:void(0)"  id="finalDiscount">{vtranslate('LBL_DISCOUNT',$MODULE)}</a></b></span>
             </td>
             <td>
-                <span id="discountTotal_final" class="pull-right discountTotal_final">{if $FINAL.discountTotal_final}{$FINAL.discountTotal_final}{else}0.00{/if}</span>
+                <span id="discountTotal_final" class="pull-right discountTotal_final">{if $FINAL.discountTotal_final}{$FINAL.discountTotal_final}{else}0{/if}</span>
 
                 <!-- Popup Discount Div -->
                 <div id="finalDiscountUI" class="finalDiscountUI validCheck hide">
@@ -196,7 +218,7 @@
                 <span class="pull-right">(+)&nbsp;<b>{vtranslate('LBL_SHIPPING_AND_HANDLING_CHARGES',$MODULE)} </b></span>
             </td>
             <td>
-                <span class="pull-right"><input id="shipping_handling_charge" name="shipping_handling_charge" data-validation-engine="validate[funcCall[Vtiger_PositiveNumber_Validator_Js.invokeValidation]]" type="text" class="lineItemInputBox" value="{if $FINAL.shipping_handling_charge}{$FINAL.shipping_handling_charge}{else}0.00{/if}" /></span>
+                <span class="pull-right"><input id="shipping_handling_charge" name="shipping_handling_charge" data-validation-engine="validate[funcCall[Vtiger_PositiveNumber_Validator_Js.invokeValidation]]" type="text" class="lineItemInputBox" value="{if $FINAL.shipping_handling_charge}{$FINAL.shipping_handling_charge}{else}0{/if}" /></span>
             </td>
         </tr>
 		<tr>
@@ -205,8 +227,8 @@
 			</td>
 			<td>
 				{assign var=PRE_TAX_TOTAL value=$FINAL.preTaxTotal}
-				<span class="pull-right" id="preTaxTotal">{if $PRE_TAX_TOTAL}{$PRE_TAX_TOTAL}{else}0.00{/if}</span>
-				<input type="hidden" id="pre_tax_total" name="pre_tax_total" value="{if $PRE_TAX_TOTAL}{$PRE_TAX_TOTAL}{else}0.00{/if}"/>
+				<span class="pull-right" id="preTaxTotal">{if $PRE_TAX_TOTAL}{$PRE_TAX_TOTAL}{else}0{/if}</span>
+				<input type="hidden" id="pre_tax_total" name="pre_tax_total" value="{if $PRE_TAX_TOTAL}{$PRE_TAX_TOTAL}{else}0{/if}"/>
 			</td>
         </tr>
 		<!-- Group Tax - starts -->
@@ -244,7 +266,7 @@
                 </div>
                 <!-- End Popup Div Group Tax -->
             </td>
-            <td><span id="tax_final" class="pull-right tax_final">{if $FINAL.tax_totalamount}{$FINAL.tax_totalamount}{else}0.00{/if}</span></td>
+            <td><span id="tax_final" class="pull-right tax_final">{if $FINAL.tax_totalamount}{$FINAL.tax_totalamount}{else}0{/if}</span></td>
         </tr>
         <!-- Group Tax - ends -->
         <tr>
@@ -256,7 +278,7 @@
                     <table class="table table-nobordered popupTable">
                         <thead>
                             <tr>
-                                <th id="sh_tax_div_title" colspan="2" nowrap align="left" >{vtranslate('LBL_SET_SHIPPING_AND_HANDLING_TAXES_FOR',$MODULE)}: {if $FINAL.shipping_handling_charge}{$FINAL.shipping_handling_charge}{else}0.00{/if}</th>
+                                            <th id="sh_tax_div_title" colspan="2" nowrap align="left" >{vtranslate('LBL_SET_SHIPPING_AND_HANDLING_TAXES_FOR',$MODULE)}: <span id="shAmountForTax" >{if $FINAL.shipping_handling_charge}{$FINAL.shipping_handling_charge}{else}0{/if}</span></th>
                                 <th align="right">
                                     <button type="button" class="close closeDiv">x</button>
                                 </th>
@@ -287,7 +309,7 @@
                 <!-- End Popup Div for Shipping and Handling TAX -->
             </td>
             <td>
-                <span class="pull-right shipping_handling_tax" id="shipping_handling_tax">{if $FINAL.shtax_totalamount}{$FINAL.shtax_totalamount}{else}0.00{/if}</span>
+                <span class="pull-right shipping_handling_tax" id="shipping_handling_tax">{if $FINAL.shtax_totalamount}{$FINAL.shtax_totalamount}{else}0{/if}</span>
             </td>
         </tr>
         <tr valign="top">
@@ -302,7 +324,7 @@
                 </div>
             </td>
             <td>
-                <span class="pull-right"><input id="adjustment" name="adjustment" type="text" data-validation-engine="validate[funcCall[Vtiger_PositiveNumber_Validator_Js.invokeValidation]]" class="lineItemInputBox" value="{if $FINAL.adjustment lt 0}{abs($FINAL.adjustment)}{elseif $FINAL.adjustment}{$FINAL.adjustment}{else}0.00{/if}"></span>
+                <span class="pull-right"><input id="adjustment" name="adjustment" type="text" data-validation-engine="validate[funcCall[Vtiger_PositiveNumber_Validator_Js.invokeValidation]]" class="lineItemInputBox" value="{if $FINAL.adjustment lt 0}{abs($FINAL.adjustment)}{elseif $FINAL.adjustment}{$FINAL.adjustment}{else}0{/if}"></span>
             </td>
         </tr>
         <tr valign="top">
@@ -326,9 +348,15 @@
                 </td>
                 <td>
                     {if $MODULE eq 'Invoice'}
-                            <span class="pull-right"><input id="received" name="received" type="text" class="lineItemInputBox" value="{if $RECORD->getDisplayValue('received') && !($IS_DUPLICATE)}{$RECORD->getDisplayValue('received')}{else}0.00{/if}"></span>
+                            {* SalesPlatform.ru begin *}
+                            {* <span class="pull-right"><input id="received" name="received" type="text" class="lineItemInputBox" value="{if $RECORD->getDisplayValue('received') && !($IS_DUPLICATE)}{$RECORD->getDisplayValue('received')}{else}0.00{/if}"></span> *}
+                            <span class="pull-right"><input id="received" name="received" type="text" class="lineItemInputBox" data-validation-engine="validate[funcCall[Vtiger_PositiveNumber_Validator_Js.invokeValidation]]" value="{if $RECORD->get('received') && !($IS_DUPLICATE)}{number_format($RECORD->get('received'), $USER_MODEL->get('no_of_currency_decimals'),'.','')}{else}0.00{/if}"></span>
+                            {* SalesPlatform.ru end *}
                     {else}
-                        <span class="pull-right"><input id="paid" name="paid" type="text" class="lineItemInputBox" value="{if $RECORD->getDisplayValue('paid') && !($IS_DUPLICATE)}{$RECORD->getDisplayValue('paid')}{else}0.00{/if}"></span>
+                        {* SalesPlatform.ru begin *}
+                        {* <span class="pull-right"><input id="paid" name="paid" type="text" class="lineItemInputBox" value="{if $RECORD->getDisplayValue('paid') && !($IS_DUPLICATE)}{$RECORD->getDisplayValue('paid')}{else}0.00{/if}"></span> *}
+                        <span class="pull-right"><input id="paid" name="paid" type="text" data-validation-engine="validate[funcCall[Vtiger_PositiveNumber_Validator_Js.invokeValidation]]" class="lineItemInputBox" value="{if $RECORD->get('paid') && !($IS_DUPLICATE)}{number_format($RECORD->get('paid'), $USER_MODEL->get('no_of_currency_decimals'),'.','')}{else}0.00{/if}"></span>
+                        {* SalesPlatform.ru end *}
                     {/if}
                 </td>
             </tr>
@@ -339,7 +367,7 @@
                     </div>
                 </td>
                 <td>
-                    <span class="pull-right"><input id="balance" name="balance" type="text" class="lineItemInputBox" value="{if $RECORD->getDisplayValue('balance') && !($IS_DUPLICATE)}{$RECORD->getDisplayValue('balance')}{else}0.00{/if}" readonly></span>
+                    <span class="pull-right"><input id="balance" name="balance" type="text" class="lineItemInputBox" value="{if $RECORD->getDisplayValue('balance') && !($IS_DUPLICATE)}{$RECORD->getDisplayValue('balance')}{else}0{/if}" readonly></span>
                 </td>
             </tr>
         {/if}

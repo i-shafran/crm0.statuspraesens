@@ -143,29 +143,7 @@ class PBXManager_PBXManager_Connector {
         $params['endtime'] = $details->get('endtime');
         $params['totalduration'] = $details->get('duration');
         $params['billduration'] = $details->get('billableseconds');
-        
-        //SalesPlatform.ru begin enable cdr fix end call mode
-        if($details->get('calldisposition') != null) {
-            switch($details->get('calldisposition')) {
-                case 'ANSWERED':
-                    $params['callstatus'] = 'completed';
-                    break;
-                case 'NO ANSWER':
-                    $params['callstatus'] = 'no-answer';
-                    break;
-                case 'BUSY':
-                    $params['callstatus'] = 'busy';
-                    break;
-                case 'FAILED':
-                    $params['callstatus'] = 'failed';
-                    break;
-                default:
-                    $params['callstatus'] = $details->get('calldisposition');
 
-            }
-        }
-        //SalesPlatform.ru end
-        
         $recordModel->updateCallDetails($params);
     }
     
@@ -236,12 +214,7 @@ class PBXManager_PBXManager_Connector {
             $params['CustomerNumber'] = $details->get('to');
         }
         
-        // SalesPlatform.ru begin Set user timezone for starttime param
-        $date = new DateTimeField( null );      
-        //$params['starttime'] = $details->get('StartTime');
-        $params['starttime'] = DateTimeField::convertToDBFormat($date->getDisplayDate()).' '.$date->getDisplayTime();
-        // SalesPlatform.ru end
-        
+        $params['starttime'] = $details->get('StartTime');
         $params['callstatus'] = "ringing";
         $user = CRMEntity::getInstance('Users');
         $current_user = $user->getActiveAdminUser();

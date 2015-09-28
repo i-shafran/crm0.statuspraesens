@@ -14,7 +14,7 @@
 				<i id="tButtonImage" class="{if $LEFTPANELHIDE neq '1'}icon-chevron-left{else}icon-chevron-right{/if}"></i>
 			</div>&nbsp
 <div style="padding-left: 15px;">
-	<form action="index.php" enctype="multipart/form-data" method="POST" name="importAdvanced">
+	<form action="/rest_api/contacts/csv_import" enctype="multipart/form-data" method="POST" name="importAdvanced">
 		<input type="hidden" name="module" value="{$FOR_MODULE}" />
 		<input type="hidden" name="view" value="Import" />
 		<input type="hidden" name="mode" value="import" />

@@ -48,6 +48,17 @@ $languageStrings = array(
     'Customer Type' => 'Тип клиента',
     'End Time' => 'Время завершения звонка',
     'Source UUID' => 'Идентификатор источника',
+
+    //SalesPlatform.ru begin
+    'inbound' => 'Входящий',
+    'outbound' => 'Исходящий',
+    'ringing' => 'Звонок',
+    'in-progress' => 'В прогрессе',
+    'completed' => 'Завершен',
+    'busy' => 'Занято',
+    'no-answer' => 'Нет ответа',
+    'Incoming Line Name' => 'Входящая линия',
+    //SalesPlatform.ru end
 );
 
 //SalesPlatform.ru begin

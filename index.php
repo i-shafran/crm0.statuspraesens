@@ -15,7 +15,7 @@ include_once 'vtlib/Vtiger/Module.php';
 include_once 'includes/main/WebUI.php';
 
 // Custom
-include_once 'classes/AutoLoader.php';
+//include_once 'classes/AutoLoader.php';
 
 $webUI = new Vtiger_WebUI();
 $webUI->process(new Vtiger_Request($_REQUEST, $_REQUEST));

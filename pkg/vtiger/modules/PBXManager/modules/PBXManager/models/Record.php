@@ -179,29 +179,7 @@ class PBXManager_Record_Model extends Vtiger_Record_Model{
         $db = PearDatabase::getInstance();
         $fnumber = preg_replace('/[-()\s+]/', '',$from);
         $rnumber = strrev($fnumber);
-        
-        //SalesPlatform.ru begin fix search entity by number
-        
-        if($from == NULL) {
-            return;
-        }
-        
-        /* Numbers starts with 7 and 8 are the same */
-        $numberSynonym = $fnumber;
-        switch($fnumber[0]) {
-            case '7':
-                $numberSynonym[0] = '8';
-                break;
-            
-            case '8':
-                $numberSynonym[0] = '7';
-                break;
-        }
-        
-        $result = $db->pquery('SELECT crmid, fieldname FROM '.self::lookuptableName.' WHERE fnumber IN (?,?)', array($fnumber, $numberSynonym));
-        //$result = $db->pquery('SELECT crmid, fieldname FROM '.self::lookuptableName.' WHERE fnumber LIKE "'. $fnumber . '%" OR rnumber LIKE "'. $rnumber . '%" ', array());
-        //SalesPlatform.ru end
-        
+        $result = $db->pquery('SELECT crmid, fieldname FROM '.self::lookuptableName.' WHERE fnumber LIKE "'. $fnumber . '%" OR rnumber LIKE "'. $rnumber . '%" ', array());
         if($db->num_rows($result)){
             $crmid = $db->query_result($result, 0, 'crmid');
             $fieldname = $db->query_result($result, 0, 'fieldname');

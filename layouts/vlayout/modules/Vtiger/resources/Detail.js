@@ -123,7 +123,9 @@ jQuery.Class("Vtiger_Detail_Js",{
 						var params = app.validationEngineOptions;
 						params.onValidationComplete = function(form, valid){
 							if(valid){
-								thisInstance.transferOwnershipSave(form)
+								if(form.attr("name")== "changeOwner"){
+                                    thisInstance.transferOwnershipSave(form)
+                                    }
 							}
 							return false;
 						}
@@ -163,7 +165,17 @@ jQuery.Class("Vtiger_Detail_Js",{
 						animation: 'show',
 						type: 'info'
 					};
-					Vtiger_Helper_Js.showPnotify(params);
+					
+                    var oldvalue=jQuery('.assigned_user_id').val();
+                    var element = jQuery(".assigned_user_id ");
+                  
+                    element.find('option[value="'+oldvalue+'"]').removeAttr("selected"); 
+                    element.find('option[value="'+transferOwner+'"]').attr('selected', 'selected');
+                    element.trigger("liszt:updated"); 
+                    var Fieldname= element.find('option[value="'+transferOwner+'"]').data("picklistvalue");
+                    element.closest(".row-fluid").find(".value").html('<a href="index.php?module=Users&amp;parent=Settings&amp;view=Detail&amp;record='+transferOwner+'">'+Fieldname+'</a>');
+                    
+                    Vtiger_Helper_Js.showPnotify(params);
 				}
 			}
 		);
@@ -1441,14 +1453,14 @@ jQuery.Class("Vtiger_Detail_Js",{
 
 	},
 
-	addTagsToList : function(data,tagText) {
-		var tagsArray = tagText.split(' ');
-
-		for(var i=0;i<tagsArray.length;i++){
-			var id = data.result[1][tagsArray[i]];
-			jQuery('#tagsList').prepend('<div class="tag row-fluid span11 marginLeftZero" data-tagname="'+tagsArray[i]+'" data-tagid="'+id+'"><span class="tagName textOverflowEllipsis span11 cursorPointer"><a>'+tagsArray[i]+'</a></span><span class="pull-right cursorPointer deleteTag">x</span></div>');
-		}
-
+	addTagsToList : function(data) { 
+            for(var key in data.result[1]){ 
+                var tagId = data.result[1][key]; 
+                var tagElement = jQuery('#tagsList').find("[data-tagid='"+tagId+"']"); 
+                if(tagElement.length == 0){ 
+                    jQuery('#tagsList').prepend('<div class="tag row-fluid span11 marginLeftZero" data-tagname="'+key+'" data-tagid="'+tagId+'"><span class="tagName textOverflowEllipsis span11 cursorPointer"><a>'+key+'</a></span><span class="pull-right cursorPointer deleteTag">x</span></div>'); 
+                }
+            }
 	},
 
 	checkTagMaxLengthExceeds : function(tagText) {
@@ -1494,7 +1506,7 @@ jQuery.Class("Vtiger_Detail_Js",{
 			}
 			AppConnector.request(params).then(
 					function(data) {
-						thisInstance.addTagsToList(data,tagText);
+						thisInstance.addTagsToList(data);
 						textElement.val('');
 					}
 				);
@@ -1581,9 +1593,6 @@ jQuery.Class("Vtiger_Detail_Js",{
 		var thisInstance = this;
 		var detailContentsHolder = thisInstance.getContentHolder();
 		var detailContainer = detailContentsHolder.closest('div.detailViewInfo');
-		app.registerEventForDatePickerFields(detailContentsHolder);
-		//Attach time picker event to time fields
-		app.registerEventForTimeFields(detailContentsHolder);
 
 		jQuery('.related', detailContainer).on('click', 'li', function(e, urlAttributes){
 			var tabElement = jQuery(e.currentTarget);
@@ -1604,6 +1613,9 @@ jQuery.Class("Vtiger_Detail_Js",{
 				function(data){
 					thisInstance.deSelectAllrelatedTabs();
 					thisInstance.markTabAsSelected(tabElement);
+                                        app.registerEventForDatePickerFields(detailContentsHolder);
+                                        //Attach time picker event to time fields
+                                        app.registerEventForTimeFields(detailContentsHolder);
 					Vtiger_Helper_Js.showHorizontalTopScrollBar();
 					element.progressIndicator({'mode': 'hide'});
 					if(typeof callBack == 'function'){
@@ -2071,55 +2083,54 @@ function sp_js_detailview_checkBeforeSave(fieldData) {
         var data = encodeURIComponent(JSON.stringify(fldvalObjectArr));      
 
         var urlstring = "index.php?module="+fieldData['module']+"&action=CheckBeforeSave&checkBeforeSaveData="+data+"&DetailViewAjaxMode=true&id="+fieldData['record'];
-
+        
+        /* Need sync request with crf protect */ 
+ 	var params = {  
+            url : urlstring, 
+            async : false, 
+            data : {} 
+ 	}; 
+        
         var continue_fl;    // true - continue, false - break  
-        $.ajax({
-            url: urlstring,            
-            type: "POST",
-            async: false,
-            dataType : "json",                     
-            complete: function (response, textStatus) {
-                                if(!empty(response.responseText) && IsJsonString(response.responseText)) {
-				    var responseObj = JSON.parse(response.responseText);
-                                    if(responseObj.response === undefined) {
-  
-                                        continue_fl = true;
-                                    }
-				    if(responseObj.response === "OK") {
-                                        if (responseObj.message !== undefined && !empty(responseObj.message)) {
-                                            alert(responseObj.message);
-                                        }
-                                        continue_fl = true;
-				    } else if(responseObj.response === "ALERT") {
-                                        if (responseObj.message !== undefined) {
-                                            alert(responseObj.message);
-                                        } else {
-                                            alert('Alert');
-                                        }
-                                        continue_fl = false;
-				    } else if(responseObj.response === "CONFIRM") {
-                                        var confirmMessage;
-                                        if (responseObj.message !== undefined) {
-                                            confirmMessage =responseObj.message;
-                                        } else {
-                                            confirmMessage = 'Confirm';
-                                        }
-				        if (confirm(confirmMessage)) {
+        AppConnector.request(params).then( function (responseObj) { 
+            if(!empty(responseObj)) { 
+                if(responseObj.response === undefined) {
 
-                                            continue_fl = true;
-	                                } else {
-                                            continue_fl = false;
-                                        }
-				    } else {
+                    continue_fl = true;
+                }
+                if(responseObj.response === "OK") {
+                    if (responseObj.message !== undefined && !empty(responseObj.message)) {
+                        alert(responseObj.message);
+                    }
+                    continue_fl = true;
+                } else if(responseObj.response === "ALERT") {
+                    if (responseObj.message !== undefined) {
+                        alert(responseObj.message);
+                    } else {
+                        alert('Alert');
+                    }
+                    continue_fl = false;
+                } else if(responseObj.response === "CONFIRM") {
+                    var confirmMessage;
+                    if (responseObj.message !== undefined) {
+                        confirmMessage =responseObj.message;
+                    } else {
+                        confirmMessage = 'Confirm';
+                    }
+                    if (confirm(confirmMessage)) {
 
-                                        continue_fl = true;
-                                    }
-                                } else {
-                                    continue_fl = true;
-                                }
-	                    }
-	    }
-        );
+                        continue_fl = true;
+                    } else {
+                        continue_fl = false;
+                    }
+                } else {
+
+                    continue_fl = true;
+                }
+            } else {
+                continue_fl = true;
+            }
+        });
         return continue_fl;
 }
 //SalesPlatform.ru end
