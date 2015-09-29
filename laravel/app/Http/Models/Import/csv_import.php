@@ -8,6 +8,7 @@ use App\Http\Models\Contacts\vtiger_contactdetails;
 use App\Http\Models\Contacts\vtiger_contactscf;
 use App\Http\Models\Contacts\vtiger_contactsubdetails;
 use App\Http\Requests;
+use Illuminate\Support\Facades\DB;
 
 use Carbon\Carbon;
 
@@ -66,6 +67,8 @@ class csv_import {
 		$contact->save();
 
 		$id = $contact->crmid;
+
+		DB::update('UPDATE vtiger_crmentity_seq SET id = ?', array($id));
 
 		foreach($controller->relation_clasess as $relation_class){
 			$model_class = new $relation_class;
