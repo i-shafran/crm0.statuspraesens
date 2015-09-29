@@ -1,0 +1,1 @@
+ALTER TABLE `vtiger_crmentity` CHANGE `crmid` `crmid` INT(19) NOT NULL AUTO_INCREMENT;
