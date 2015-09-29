@@ -24,7 +24,7 @@
 
 		<script type="text/javascript" src="libraries/jquery/jquery.min.js"></script>
 		<script type="text/javascript" src="libraries/bootstrap/js/bootstrap-tooltip.js"></script>
-		<script type="text/javascript" src="libraries/jquery/select2/select2.min.js"></script>
+		<script type="text/javascript" src="libraries/jquery/select2/select2.js"></script>
         {* SalesPLatform.ru begin *}
         <script type="text/javascript" src="libraries/jquery/select2/select2_locale_ru.js"></script>
         {* SalesPLatform.ru end *}

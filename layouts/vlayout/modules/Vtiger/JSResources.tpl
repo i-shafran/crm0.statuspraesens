@@ -14,7 +14,7 @@
 {* <script> resources below *}
 	<script type="text/javascript" src="libraries/jquery/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="libraries/jquery/chosen/chosen.jquery.min.js"></script>
-	<script type="text/javascript" src="libraries/jquery/select2/select2.min.js"></script>
+	<script type="text/javascript" src="libraries/jquery/select2/select2.js"></script>
     {* SalesPLatform.ru begin *}
     <script type="text/javascript" src="libraries/jquery/select2/select2_locale_ru.js"></script>
 	{* SalesPLatform.ru end *}
