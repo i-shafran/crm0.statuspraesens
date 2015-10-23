@@ -49,6 +49,7 @@
 	<script type="text/javascript" src="libraries/jquery/jquery.placeholder.js"></script>
 
     <script type="text/javascript" src="/resources/mass_edit.js"></script>
+    <script type="text/javascript" src="/resources/custom.js"></script>
 
 	{foreach key=index item=jsModel from=$SCRIPTS}
             <script type="{$jsModel->getType()}" src="{vresource_url($jsModel->getSrc())}"></script>

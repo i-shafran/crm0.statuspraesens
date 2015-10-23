@@ -10,3 +10,8 @@ button.mass_edit_save {
 button.mass_edit_cancel {
 	background-color: red;
 }
+
+.error {
+	margin-top: 10px;
+	color: red;
+}
