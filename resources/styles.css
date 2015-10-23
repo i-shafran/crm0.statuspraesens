@@ -15,3 +15,6 @@ button.mass_edit_cancel {
 	margin-top: 10px;
 	color: red;
 }
+div#custom_filterContainer div.allConditionContainer {
+	display: none;
+}

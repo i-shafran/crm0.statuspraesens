@@ -6,6 +6,7 @@ var conditionList = $("div.conditionList").html();
 	conditionList = "<div class='conditionList'>"+ conditionList +"</div> ";
 var button = $("div#custom_filterContainer button#go_filter");
 
+	
 // Отфильтровать
 filterContainer.find("button#go_filter").on("click", function(){
 	
@@ -14,6 +15,7 @@ filterContainer.find("button#go_filter").on("click", function(){
 	var field_name = ""; // mailingcity
 	var field_criteria = ""; // c
 	var field_value = ""; // Москва
+	var viewname = $("select#customFilter option:selected").val(); // Номер вида
 	var send_ajax = true;
 
 	$("div#custom_filterContainer div.conditionList").each(function(){
@@ -52,7 +54,7 @@ filterContainer.find("button#go_filter").on("click", function(){
 			search_params: search_params,
 			sortorder: "",
 			view: "List",
-			viewname: 114
+			viewname: viewname
 		},
 		success: function(data){
 			$("#listViewContents").html(data);
@@ -73,6 +75,16 @@ filterContainer.find(".addCondition button").on("click", function(){
 // Удалить
 filterContainer.on("click", "i.icon-trash", function(){
 	$(this).parent("div.conditionList").remove();
+});
+	
+// Развернуть, свернуть
+$("div#custom_filterContainer_show a").toggle(function(){
+	$("div#custom_filterContainer div.allConditionContainer").show();
+	$(this).text("Скрыть");
+},
+function(){
+	$("div#custom_filterContainer div.allConditionContainer").hide();
+	$(this).text("Расширенный поиск");
 });
 
 }); // end ready()

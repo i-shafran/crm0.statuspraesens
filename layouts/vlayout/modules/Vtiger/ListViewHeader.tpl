@@ -89,6 +89,7 @@
 		</div>
             {*Go Filter*}
             <div id="custom_filterContainer" class="filterContainer">
+                <div id="custom_filterContainer_show"><a>Расширенный поиск</a></div>
                 <div class="allConditionContainer conditionGroup contentsBackground well">
                     <div class="header">
                         <span><strong>{vtranslate('LBL_ALL_CONDITIONS',$MODULE)}</strong></span>
