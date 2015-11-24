@@ -76,6 +76,10 @@ class csv_import {
 			$model_class->$primary_key = $id;
 			
 			foreach($arInsert as $key => $value){
+				if($value == ""){
+					// Пустые значения пропускаем
+					continue;
+				}
 				if(in_array($key, $relation_class::$fields)){
 					$model_class->$key = $value;
 				}
