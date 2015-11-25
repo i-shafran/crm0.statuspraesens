@@ -16,3 +16,5 @@ UPDATE `vtiger_contactscf` SET `cf_893` = '';
 UPDATE `vtiger_contactscf` SET `cf_895` = '';
 UPDATE `vtiger_contactscf` SET `cf_897` = '';
 UPDATE `vtiger_contactscf` SET `cf_907` = '00:00:00';
+
+ALTER TABLE `vtiger_contactscf` ADD `fix` INT(1) NULL DEFAULT NULL AFTER `cf_952`;

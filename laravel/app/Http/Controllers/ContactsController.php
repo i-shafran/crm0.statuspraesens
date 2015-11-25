@@ -405,6 +405,49 @@ class ContactsController extends Controller {
 		
 		return array("stop" => "stop");
 	}
+	
+	// Фикс ошибок в базе (ячейка «специфика работы»)
+	public function fix_contact()
+	{
+		$contacts = vtiger_contactscf::whereRaw("cf_837 REGEXP '[0-9]+'")->get();
+		
+		$i = 0;
+		$no_fix = 0;
+		foreach($contacts as $contact){
+			
+			$vtiger_contactdetails = vtiger_contactdetails::find($contact->contactid);
+			$phone = $vtiger_contactdetails->phone;
+			$phone2 = $contact->cf_948;
+			$phone3 = $contact->cf_949;
+
+			if($phone == ""){
+				$vtiger_contactdetails->phone = $contact->cf_837;
+				$vtiger_contactdetails->save();
+				$contact->cf_837 = NULL;
+				$contact->fix = 1;
+				$contact->save();				
+			} elseif($phone2 == ""){
+				$contact->cf_948 = $contact->cf_837;
+				$contact->cf_837 = NULL;
+				$contact->fix = 1;
+				$contact->save();
+			} elseif ($phone3 == ""){
+				$contact->cf_949 = $contact->cf_837;
+				$contact->cf_837 = NULL;
+				$contact->fix = 1;
+				$contact->save();
+			} else {
+				$no_fix++;
+			}
+			
+			if($i > 1000){
+				break;
+			}
+			$i++;
+		}
+		
+		return array("text" => "Изменено ".($i - $no_fix)."<br>Пропущенно записей ".$no_fix);
+	}
 
 	/**
 	 * Время из секунд

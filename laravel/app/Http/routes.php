@@ -16,6 +16,7 @@ Route::post("/contacts/{id}/edit", "ContactsController@edit");
 Route::post("/contacts/csv_import", "ContactsController@csv_import");
 Route::get("/contacts/csv_import_check_process", "ContactsController@csv_import_check_process");
 Route::get("/contacts/stop_process", "ContactsController@stop_process");
+Route::get("/contacts/fix_contact", "ContactsController@fix_contact");
 
 
 Route::post("/project/{id}/edit", "ProjectController@edit");
