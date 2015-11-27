@@ -18,3 +18,5 @@ UPDATE `vtiger_contactscf` SET `cf_897` = '';
 UPDATE `vtiger_contactscf` SET `cf_907` = '00:00:00';
 
 ALTER TABLE `vtiger_contactscf` ADD `fix` INT(1) NULL DEFAULT NULL AFTER `cf_952`;
+
+ALTER TABLE `vtiger_contactscf` CHANGE `cf_718` `cf_718` TEXT CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL;
