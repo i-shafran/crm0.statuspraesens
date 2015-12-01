@@ -11,5 +11,3 @@ CREATE TABLE IF NOT EXISTS `process` (
 
 ALTER TABLE `process`
   ADD PRIMARY KEY (`id`);
-
-ALTER TABLE `process` CHANGE `status` `status` TEXT CHARACTER SET utf8 COLLATE utf8_unicode_ci NULL DEFAULT NULL;

@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-24 22:15:36
+<?php /* Smarty version Smarty-3.1.7, created on 2015-10-20 11:17:58
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Import/Import_Step3.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:19801896456044bd8493333-32224531%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:7456435375625f8b6437062-79385299%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '46886897dc86b31e0d963e095383c89d7f2599f5' => 
     array (
       0 => '/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Import/Import_Step3.tpl',
-      1 => 1443094544,
+      1 => 1443442597,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '19801896456044bd8493333-32224531',
+  'nocache_hash' => '7456435375625f8b6437062-79385299',
   'function' => 
   array (
   ),
@@ -29,9 +29,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_56044bd8506e2',
+  'unifunc' => 'content_5625f8b64c0f0',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_56044bd8506e2')) {function content_56044bd8506e2($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5625f8b64c0f0')) {function content_5625f8b64c0f0($_smarty_tpl) {?>
 
 <table width="100%" cellspacing="0" cellpadding="2">
 	<tr> 
@@ -121,6 +121,7 @@ $_smarty_tpl->tpl_vars['_FIELD_INFO']->_loop = true;
 "><?php echo vtranslate($_smarty_tpl->tpl_vars['_FIELD_INFO']->value->getFieldLabelKey(),$_smarty_tpl->tpl_vars['FOR_MODULE']->value);?>
 </option>
 										<?php } ?>
+                                        <option value="cf_719">Отчество</option>
 									</select>
 								</td>
 							</tr>

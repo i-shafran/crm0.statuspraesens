@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-28 14:32:36
+<?php /* Smarty version Smarty-3.1.7, created on 2015-10-07 13:06:49
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Vtiger/DetailViewHeader.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:15062718225609255401f887-13394437%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:13560206055614eeb99cdd27-95112719%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '15062718225609255401f887-13394437',
+  'nocache_hash' => '13560206055614eeb99cdd27-95112719',
   'function' => 
   array (
   ),
@@ -32,9 +32,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5609255416031',
+  'unifunc' => 'content_5614eeb9aef65',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5609255416031')) {function content_5609255416031($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5614eeb9aef65')) {function content_5614eeb9aef65($_smarty_tpl) {?>
 <?php $_smarty_tpl->tpl_vars["MODULE_NAME"] = new Smarty_variable($_smarty_tpl->tpl_vars['MODULE_MODEL']->value->get('name'), null, 0);?><input id="recordId" type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['RECORD']->value->getId();?>
 " /><div class="detailViewContainer"><div class="row-fluid detailViewTitle"><div class="<?php if ($_smarty_tpl->tpl_vars['NO_PAGINATION']->value){?> span12 <?php }else{ ?> span10 <?php }?>"><div class="row-fluid"><div class="span5"><div class="row-fluid"><?php echo $_smarty_tpl->getSubTemplate (vtemplate_path("DetailViewHeaderTitle.tpl",$_smarty_tpl->tpl_vars['MODULE']->value), $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, null, null, array(), 0);?>
 </div></div><div class="span7"><div class="pull-right detailViewButtoncontainer"><div class="btn-toolbar"><?php  $_smarty_tpl->tpl_vars['DETAIL_VIEW_BASIC_LINK'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['DETAIL_VIEW_BASIC_LINK']->_loop = false;

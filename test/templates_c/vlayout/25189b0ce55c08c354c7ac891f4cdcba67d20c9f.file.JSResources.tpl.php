@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-28 14:30:51
+<?php /* Smarty version Smarty-3.1.7, created on 2015-10-09 13:50:04
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Vtiger/JSResources.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:20514120375603dfd6aaf496-42495256%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1828433589560bb54e651f05-56510407%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '25189b0ce55c08c354c7ac891f4cdcba67d20c9f' => 
     array (
       0 => '/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Vtiger/JSResources.tpl',
-      1 => 1443439482,
+      1 => 1444387391,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '20514120375603dfd6aaf496-42495256',
+  'nocache_hash' => '1828433589560bb54e651f05-56510407',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5603dfd6acd0a',
+  'unifunc' => 'content_560bb54e66fee',
   'variables' => 
   array (
     'SCRIPTS' => 0,
@@ -24,13 +24,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5603dfd6acd0a')) {function content_5603dfd6acd0a($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_560bb54e66fee')) {function content_560bb54e66fee($_smarty_tpl) {?>
 
 
 
 	<script type="text/javascript" src="libraries/jquery/jquery.blockUI.js"></script>
 	<script type="text/javascript" src="libraries/jquery/chosen/chosen.jquery.min.js"></script>
-	<script type="text/javascript" src="libraries/jquery/select2/select2.min.js"></script>
+	<script type="text/javascript" src="libraries/jquery/select2/select2.js"></script>
     
     <script type="text/javascript" src="libraries/jquery/select2/select2_locale_ru.js"></script>
 	
@@ -65,6 +65,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 	<script type="text/javascript" src="libraries/jquery/jquery.placeholder.js"></script>
 
     <script type="text/javascript" src="/resources/mass_edit.js"></script>
+    <script type="text/javascript" src="/resources/custom.js"></script>
 
 	<?php  $_smarty_tpl->tpl_vars['jsModel'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['jsModel']->_loop = false;
  $_smarty_tpl->tpl_vars['index'] = new Smarty_Variable;

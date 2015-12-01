@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-24 22:15:36
+<?php /* Smarty version Smarty-3.1.7, created on 2015-10-20 11:17:58
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Import/Import_Step2.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:194536340456044bd8424bb5-98464702%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:5374422025625f8b639df23-82859847%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a62d907dc32575d96200c890051197ac995c0929' => 
     array (
       0 => '/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Import/Import_Step2.tpl',
-      1 => 1443094544,
+      1 => 1432905399,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '194536340456044bd8424bb5-98464702',
+  'nocache_hash' => '5374422025625f8b639df23-82859847',
   'function' => 
   array (
   ),
@@ -29,9 +29,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_56044bd848dbb',
+  'unifunc' => 'content_5625f8b643149',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_56044bd848dbb')) {function content_56044bd848dbb($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_5625f8b643149')) {function content_5625f8b643149($_smarty_tpl) {?>
+
+<script type="application/javascript" src="/resources/csv_import.js"></script>
+<script type="text/javascript" src="http://malsup.github.io/jquery.form.js"></script> <!--плагин ajaxForm-->
 
 <table width="100%" cellspacing="0" cellpadding="2">
 	<tr>

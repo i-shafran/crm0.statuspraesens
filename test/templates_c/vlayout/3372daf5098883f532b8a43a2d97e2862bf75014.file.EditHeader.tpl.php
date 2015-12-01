@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-28 13:31:15
+<?php /* Smarty version Smarty-3.1.7, created on 2015-09-30 13:11:26
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Reports/EditHeader.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1324548399560916f302b730-51997554%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1309205142560bb54e15f5d8-28248592%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1324548399560916f302b730-51997554',
+  'nocache_hash' => '1309205142560bb54e15f5d8-28248592',
   'function' => 
   array (
   ),
@@ -24,9 +24,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_560916f30795e',
+  'unifunc' => 'content_560bb54e19bd0',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_560916f30795e')) {function content_560916f30795e($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_560bb54e19bd0')) {function content_560bb54e19bd0($_smarty_tpl) {?>
 <div class="editContainer" style="padding-left: 2%;padding-right: 2%"><br><h3><?php if ($_smarty_tpl->tpl_vars['RECORD_ID']->value==''){?><?php echo vtranslate('LBL_CREATING_REPORT',$_smarty_tpl->tpl_vars['QUALIFIED_MODULE']->value);?>
 <?php }else{ ?><?php echo vtranslate('LBL_EDITING_REPORT',$_smarty_tpl->tpl_vars['QUALIFIED_MODULE']->value);?>
  : <?php echo vtranslate($_smarty_tpl->tpl_vars['REPORT_MODEL']->value->get('reportname'),$_smarty_tpl->tpl_vars['QUALIFIED_MODULE']->value);?>

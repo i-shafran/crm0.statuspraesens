@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-24 14:37:13
+<?php /* Smarty version Smarty-3.1.7, created on 2015-10-07 13:06:50
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Vtiger/uitypes/PhoneDetailView.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:7983880265603e0693426e1-62672253%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:14742317625614eeba3c0e51-42440404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '7983880265603e0693426e1-62672253',
+  'nocache_hash' => '14742317625614eeba3c0e51-42440404',
   'function' => 
   array (
   ),
@@ -28,9 +28,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_5603e0693d0b0',
+  'unifunc' => 'content_5614eeba48135',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5603e0693d0b0')) {function content_5603e0693d0b0($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_regex_replace')) include '/www/3.dev.ept.ru/html/libraries/Smarty/libs/plugins/modifier.regex_replace.php';
+<?php if ($_valid && !is_callable('content_5614eeba48135')) {function content_5614eeba48135($_smarty_tpl) {?><?php if (!is_callable('smarty_modifier_regex_replace')) include '/www/3.dev.ept.ru/html/libraries/Smarty/libs/plugins/modifier.regex_replace.php';
 ?>
 
 

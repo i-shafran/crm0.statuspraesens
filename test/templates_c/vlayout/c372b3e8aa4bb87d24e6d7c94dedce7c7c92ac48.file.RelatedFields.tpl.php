@@ -1,6 +1,6 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-28 13:31:25
+<?php /* Smarty version Smarty-3.1.7, created on 2015-09-30 13:11:30
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Reports/RelatedFields.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1148769611560916fd8abf24-08658999%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1919838600560bb552039ff8-11262286%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
@@ -11,7 +11,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1148769611560916fd8abf24-08658999',
+  'nocache_hash' => '1919838600560bb552039ff8-11262286',
   'function' => 
   array (
   ),
@@ -35,9 +35,9 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_560916fd96969',
+  'unifunc' => 'content_560bb5520fa5e',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_560916fd96969')) {function content_560916fd96969($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_560bb5520fa5e')) {function content_560bb5520fa5e($_smarty_tpl) {?>
 <span class="span6"><div class="row-fluid"><select class="chzn-select span11 selectedSortFields"><option value="none"><?php echo vtranslate('LBL_NONE',$_smarty_tpl->tpl_vars['MODULE']->value);?>
 </option><?php  $_smarty_tpl->tpl_vars['PRIMARY_MODULE'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['PRIMARY_MODULE']->_loop = false;
  $_smarty_tpl->tpl_vars['PRIMARY_MODULE_NAME'] = new Smarty_Variable;

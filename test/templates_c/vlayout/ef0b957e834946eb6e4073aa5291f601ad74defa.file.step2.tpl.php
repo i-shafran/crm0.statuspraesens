@@ -1,20 +1,22 @@
-<?php /* Smarty version Smarty-3.1.7, created on 2015-09-28 13:31:25
+<?php /* Smarty version Smarty-3.1.7, created on 2015-09-30 13:23:06
          compiled from "/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Reports/step2.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:134987335560916fd5fcc92-32723591%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2102447831560bb551ccbdd5-74751878%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'ef0b957e834946eb6e4073aa5291f601ad74defa' => 
     array (
       0 => '/www/3.dev.ept.ru/html/includes/runtime/../../layouts/vlayout/modules/Reports/step2.tpl',
-      1 => 1436794412,
+      1 => 1443608212,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '134987335560916fd5fcc92-32723591',
+  'nocache_hash' => '2102447831560bb551ccbdd5-74751878',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.7',
+  'unifunc' => 'content_560bb551f35df',
   'variables' => 
   array (
     'MODULE' => 0,
@@ -51,10 +53,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'SELECTED_CALCULATION_FIELDS' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.7',
-  'unifunc' => 'content_560916fd85a70',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_560916fd85a70')) {function content_560916fd85a70($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_560bb551f35df')) {function content_560bb551f35df($_smarty_tpl) {?>
 <form class="form-horizontal recordEditView" id="report_step2" method="post" action="index.php"><input type="hidden" name="module" value="<?php echo $_smarty_tpl->tpl_vars['MODULE']->value;?>
 " /><input type="hidden" name="view" value="Edit" /><input type="hidden" name="mode" value="step3" /><input type="hidden" name="record" value="<?php echo $_smarty_tpl->tpl_vars['RECORD_ID']->value;?>
 " /><input type="hidden" name="reportname" value="<?php echo $_smarty_tpl->tpl_vars['REPORT_MODEL']->value->get('reportname');?>
@@ -74,8 +74,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ><input type="hidden" name="specificemails" value=<?php echo ZEND_JSON::encode($_smarty_tpl->tpl_vars['REPORT_MODEL']->value->get('specificemails'));?>
 ><input type="hidden" name="schtypeid" value="<?php echo $_smarty_tpl->tpl_vars['REPORT_MODEL']->value->get('schtypeid');?>
 "><input type="hidden" class="step" value="2" /><div class="well padding1per contentsBackground"><div class="row-fluid block padding1per"><div class="row-fluid padding1per"><strong><?php echo vtranslate('LBL_SELECT_COLUMNS',$_smarty_tpl->tpl_vars['MODULE']->value);?>
-(<?php echo vtranslate('LBL_MAX',$_smarty_tpl->tpl_vars['MODULE']->value);?>
- 25)</strong></div><div class="row-fluid padding1per"><select data-placeholder="<?php echo vtranslate('LBL_ADD_MORE_COLUMNS',$_smarty_tpl->tpl_vars['MODULE']->value);?>
+</strong></div><div class="row-fluid padding1per"><select data-placeholder="<?php echo vtranslate('LBL_ADD_MORE_COLUMNS',$_smarty_tpl->tpl_vars['MODULE']->value);?>
 " id="reportsColumnsList" class="select2-container span11 columns" multiple=""><?php  $_smarty_tpl->tpl_vars['PRIMARY_MODULE'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['PRIMARY_MODULE']->_loop = false;
  $_smarty_tpl->tpl_vars['PRIMARY_MODULE_NAME'] = new Smarty_Variable;
  $_from = $_smarty_tpl->tpl_vars['PRIMARY_MODULE_FIELDS']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
